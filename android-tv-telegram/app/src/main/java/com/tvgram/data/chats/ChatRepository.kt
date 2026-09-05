@@ -214,8 +214,9 @@ class ChatRepository(
 }
 
 private fun TdApi.DraftMessage.previewText(): String {
-    val content = inputMessageText as? TdApi.InputMessageText ?: return ""
-    return content.text?.text.orEmpty()
+    // TDLib wraps draft content in its own hierarchy; only plain text is worth previewing.
+    val text = content as? TdApi.DraftMessageContentText ?: return ""
+    return text.text?.text.orEmpty()
 }
 
 fun TdApi.ChatType.toKind(): ChatKind = when (this) {

@@ -51,9 +51,14 @@ everything sold in the last several years.
 
 ## Version requirement
 
-TDLib **1.8.10 or newer**. The client uses the `org.drinkless.tdlib` package (not the older
+**TDLib 1.8.67** is the version this code is verified against — run
+`tools/verify-tdlib-api.sh` to re-verify against any other revision.
+
+The client uses the `org.drinkless.tdlib` package (not the older
 `org.drinkless.td.libcore.telegram`), the generic `TdApi.Function<R>` signature, the flat
-`SetTdlibParameters` request and `TdApi.User.usernames` — all of which landed in the 1.8.x
-series.
+`SetTdlibParameters` request, `TdApi.User.usernames`, and `DraftMessage.content`
+(`DraftMessageContent`, which replaced the older `input_message_text` field). An older
+1.8.x build will fail to compile on that last one; the verification script names the
+mismatch precisely.
 
 See `../../docs/BUILDING_TDLIB.md` for the build recipe.

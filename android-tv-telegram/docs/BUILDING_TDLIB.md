@@ -5,9 +5,12 @@ TDLib не публикуется в Maven Central для Android — офици
 Сборка занимает 30–90 минут на среднем ноутбуке и делается **один раз**: результат
 кладётся в `app/libs/` и дальше не пересобирается.
 
-> Требуемая версия: **TDLib 1.8.10+**. Клиент использует пакет `org.drinkless.tdlib`
+> Проверенная версия: **TDLib 1.8.67**. Клиент использует пакет `org.drinkless.tdlib`
 > (не устаревший `org.drinkless.td.libcore.telegram`), обобщённую сигнатуру
-> `TdApi.Function<R>`, «плоский» запрос `SetTdlibParameters` и поле `TdApi.User.usernames`.
+> `TdApi.Function<R>`, «плоский» запрос `SetTdlibParameters`, `TdApi.User.usernames` и
+> `DraftMessage.content`. На более старой 1.8.x последнее поле называется иначе, и код не
+> соберётся — какой именно версии соответствует ваш чекаут, покажет
+> `tools/verify-tdlib-api.sh`.
 
 ---
 
@@ -114,6 +117,22 @@ cp tdlib.jar <репозиторий>/android-tv-telegram/app/libs/
 
 ## 5. Проверка
 
+Есть две независимые проверки.
+
+**До сборки TDLib** — соответствие кода схеме API. Не требует ни Android SDK, ни NDK, ни
+собранной TDLib, занимает пару минут:
+
+```bash
+tools/verify-tdlib-api.sh              # против master
+tools/verify-tdlib-api.sh v1.8.50      # против конкретной ревизии
+```
+
+Скрипт клонирует схему, генерирует из неё `TdApi.java` и компилирует против него весь
+слой `td/` и `data/`, затем прогоняет юнит-тесты. Любое расхождение по именам классов и
+полей всплывает здесь, а не через час сборки под Android.
+
+**После установки артефактов** — их наличие:
+
 ```bash
 ./gradlew :app:verifyTdlib
 ```
@@ -130,5 +149,6 @@ cp tdlib.jar <репозиторий>/android-tv-telegram/app/libs/
 | `UnsatisfiedLinkError: dlopen failed: library "libtdjni.so" not found` | нет `.so` для ABI устройства | добавьте нужный ABI в сборку TDLib и в `abiFilters` |
 | `NoClassDefFoundError: org/drinkless/tdlib/Client` | положены только `.so`, без Java-биндингов | скопируйте `java/org` или `tdlib.jar` |
 | `Unresolved reference: usernames` | TDLib старее 1.8.6 | обновите TDLib |
+| `Unresolved reference: content` в `DraftMessage` | TDLib старее той, где черновик стал `DraftMessageContent` | обновите TDLib |
 | `Function<R>` — «type arguments not allowed» | TDLib старее 1.8.6 | обновите TDLib |
 | OpenSSL собирается вечно | собираются все 4 ABI | оставьте `arm64-v8a` и `x86_64` |
