@@ -1,0 +1,21 @@
+# Android / Gradle
+*.iml
+.gradle/
+build/
+local.properties
+.idea/
+.DS_Store
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Signing material must never be committed
+*.jks
+*.keystore
+keystore.properties
+
+# TDLib binaries are built locally, not tracked (see docs/BUILDING_TDLIB.md)
+app/libs/*.jar
+app/libs/*.aar
+app/libs/jniLibs/
+app/libs/java/

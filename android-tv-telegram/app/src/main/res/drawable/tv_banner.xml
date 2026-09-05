@@ -1,0 +1,37 @@
+<!--
+  Android TV banners must be 320x180. A vector keeps the artwork crisp on 4K panels
+  without shipping four bitmap densities.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="320dp"
+    android:height="180dp"
+    android:viewportWidth="320"
+    android:viewportHeight="180">
+    <path
+        android:fillColor="#0E1621"
+        android:pathData="M0,0h320v180h-320z" />
+    <path
+        android:fillColor="#17212B"
+        android:pathData="M0,120h320v60h-320z" />
+    <path
+        android:fillColor="#54A9EB"
+        android:pathData="M64,60m-40,0a40,40 0,1 1,80 0a40,40 0,1 1,-80 0" />
+    <group
+        android:scaleX="1.9"
+        android:scaleY="1.9"
+        android:translateX="40"
+        android:translateY="37">
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M2.01,21L23,12 2.01,3 2,10l15,2 -15,2z" />
+    </group>
+    <path
+        android:fillColor="#54A9EB"
+        android:pathData="M140,52h150v8h-150z" />
+    <path
+        android:fillColor="#8FA3B6"
+        android:pathData="M140,72h110v6h-110z" />
+    <path
+        android:fillColor="#8FA3B6"
+        android:pathData="M140,88h80v6h-80z" />
+</vector>
