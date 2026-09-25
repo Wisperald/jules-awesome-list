@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Compact variant of the extended widget, used when it is resized to one row. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/widget_background"
+    android:orientation="vertical"
+    android:padding="@dimen/widget_padding">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextClock
+            android:id="@+id/widget_time"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:autoSizeMaxTextSize="72sp"
+            android:autoSizeMinTextSize="18sp"
+            android:autoSizeTextType="uniform"
+            android:fontFeatureSettings="tnum"
+            android:format12Hour="h:mm"
+            android:format24Hour="HH:mm"
+            android:gravity="start|center_vertical"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:textColor="@color/widget_text" />
+
+        <TextClock
+            android:id="@+id/widget_ampm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:format12Hour="a"
+            android:format24Hour="a"
+            android:maxLines="1"
+            android:textColor="@color/widget_text_secondary"
+            android:textSize="14sp"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <TextClock
+        android:id="@+id/widget_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:format12Hour="EEEE, d MMMM"
+        android:format24Hour="EEEE, d MMMM"
+        android:maxLines="1"
+        android:textColor="@color/widget_text_secondary"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/widget_next_alarm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:drawableStart="@drawable/ic_widget_alarm"
+        android:drawablePadding="6dp"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:maxLines="1"
+        android:minHeight="28dp"
+        android:text="@string/widget_no_alarms"
+        android:textColor="@color/widget_accent"
+        android:textSize="14sp" />
+</LinearLayout>
