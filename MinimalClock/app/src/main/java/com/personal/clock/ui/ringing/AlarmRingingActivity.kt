@@ -29,7 +29,6 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -49,8 +48,8 @@ import com.personal.clock.ui.components.rememberWallClock
 import com.personal.clock.ui.theme.ClockTheme
 import com.personal.clock.util.LocaleHelper
 import com.personal.clock.util.TimeText
+import com.personal.clock.ui.components.currentLocale
 import java.time.ZoneId
-import java.util.Locale
 
 /**
  * Full-screen ringing UI, shown over the lock screen via the notification's
@@ -90,7 +89,7 @@ class AlarmRingingActivity : ComponentActivity() {
 private fun RingingScreen(info: RingingInfo, settings: AppSettings) {
     val context = LocalContext.current
     val now by rememberWallClock()
-    val locale = LocalConfiguration.current.locales[0] ?: Locale.getDefault()
+    val locale = currentLocale()
     val is24Hour = TimeText.is24Hour(context, settings.timeFormat)
     val clock = TimeText.format(now.atZone(ZoneId.systemDefault()), locale, is24Hour)
 

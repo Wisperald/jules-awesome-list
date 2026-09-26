@@ -22,7 +22,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -42,9 +41,9 @@ import com.personal.clock.ui.components.MinTouchTarget
 import com.personal.clock.ui.components.SectionHeader
 import com.personal.clock.ui.components.rememberElapsedClock
 import com.personal.clock.util.TimeText
+import com.personal.clock.ui.components.currentLocale
 import java.time.Instant
 import java.time.ZoneId
-import java.util.Locale
 
 /** ~25 fps while running and visible; nothing at all when paused or in the background. */
 private const val FRAME_MILLIS = 40L
@@ -202,7 +201,7 @@ private fun LapRow(number: Int, lap: Long, split: Long, tag: String?) {
 
 @Composable
 private fun HistoryRow(result: StopwatchResult, is24Hour: Boolean) {
-    val locale = LocalConfiguration.current.locales[0] ?: Locale.getDefault()
+    val locale = currentLocale()
     val at = Instant.ofEpochMilli(result.finishedAt).atZone(ZoneId.systemDefault())
     val whenText = TimeText.datePattern(locale, "dMMM").format(at) + " " +
         TimeText.format(at, locale, is24Hour)

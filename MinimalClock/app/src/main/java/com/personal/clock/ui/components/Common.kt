@@ -35,6 +35,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.personal.clock.R
 import com.personal.clock.domain.DurationFormat
+import java.util.Locale
+
+/** Current UI locale, read through the configuration so a language change recomposes. */
+@Composable
+fun currentLocale(): Locale = LocalConfiguration.current.locales[0]
 
 /** Minimum touch target recommended by Material / accessibility guidelines. */
 val MinTouchTarget = 48.dp

@@ -26,7 +26,6 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -50,6 +49,7 @@ import com.personal.clock.ui.components.rememberPermissionStatus
 import com.personal.clock.ui.components.rememberQuietNotificationRequest
 import com.personal.clock.ui.components.rememberWallClock
 import com.personal.clock.util.TimeText
+import com.personal.clock.ui.components.currentLocale
 import java.time.Instant
 import java.time.ZoneId
 import java.time.ZonedDateTime
@@ -60,7 +60,7 @@ fun AlarmsScreen(settings: AppSettings, viewModel: AlarmsViewModel = viewModel(f
     val alarms by viewModel.alarms.collectAsStateWithLifecycle()
     val now by rememberWallClock()
     val context = LocalContext.current
-    val locale = LocalConfiguration.current.locales[0] ?: Locale.getDefault()
+    val locale = currentLocale()
     val is24Hour = TimeText.is24Hour(context, settings.timeFormat)
     val permissions = rememberPermissionStatus()
     val askNotifications = rememberQuietNotificationRequest()

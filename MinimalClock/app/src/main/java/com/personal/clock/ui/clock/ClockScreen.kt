@@ -67,6 +67,7 @@ import com.personal.clock.ui.components.MinTouchTarget
 import com.personal.clock.ui.components.SectionHeader
 import com.personal.clock.ui.components.rememberWallClock
 import com.personal.clock.util.TimeText
+import com.personal.clock.ui.components.currentLocale
 import java.text.Collator
 import java.time.Instant
 import java.time.ZoneId
@@ -80,7 +81,7 @@ fun ClockScreen(settings: AppSettings, viewModel: ClockViewModel = viewModel(fac
     val cities by viewModel.cities.collectAsStateWithLifecycle()
     val now by rememberWallClock()
     val context = LocalContext.current
-    val locale = LocalConfiguration.current.locales[0] ?: Locale.getDefault()
+    val locale = currentLocale()
     val is24Hour = TimeText.is24Hour(context, settings.timeFormat)
     val localZone = ZoneId.systemDefault()
     var showPicker by rememberSaveable { mutableStateOf(false) }
@@ -331,7 +332,7 @@ private fun CityPickerDialog(
     onDismiss: () -> Unit,
 ) {
     var query by rememberSaveable { mutableStateOf("") }
-    val locale = LocalConfiguration.current.locales[0] ?: Locale.getDefault()
+    val locale = currentLocale()
     val names = cityNameResolver()
     val collator = remember(locale) { Collator.getInstance(locale) }
     val available = remember(excluded, locale) {

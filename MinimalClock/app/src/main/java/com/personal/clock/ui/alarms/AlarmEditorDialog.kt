@@ -61,9 +61,9 @@ import com.personal.clock.ui.components.MinTouchTarget
 import com.personal.clock.ui.components.Stepper
 import com.personal.clock.ui.components.rememberRingtonePicker
 import com.personal.clock.ui.components.ringtoneTitle
+import com.personal.clock.ui.components.currentLocale
 import java.time.format.TextStyle
 import java.time.temporal.WeekFields
-import java.util.Locale
 
 @Composable
 fun AlarmEditorDialog(
@@ -73,7 +73,7 @@ fun AlarmEditorDialog(
     onSave: (Alarm) -> Unit,
     onDelete: (() -> Unit)?,
 ) {
-    val locale = LocalConfiguration.current.locales[0] ?: Locale.getDefault()
+    val locale = currentLocale()
     val timeState = rememberTimePickerState(initialHour = initial.hour, initialMinute = initial.minute, is24Hour = is24Hour)
     var label by rememberSaveable { mutableStateOf(initial.label) }
     var days by rememberSaveable { mutableIntStateOf(initial.daysMask) }
