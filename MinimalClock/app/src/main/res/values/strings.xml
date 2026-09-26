@@ -143,6 +143,8 @@
     <string name="channel_timer_running">Running timers</string>
     <string name="channel_timer_running_desc">Countdown of active timers</string>
     <string name="channel_alarm_status">Alarm status</string>
+    <string name="channel_alarm_fallback">Alarms (backup sound)</string>
+    <string name="channel_alarm_fallback_desc">Used only if the system blocks the normal alarm sound</string>
     <string name="channel_alarm_status_desc">Snoozed and missed alarms</string>
     <string name="widget_compact_name">Clock</string>
     <string name="widget_extended_name">Clock and alarm</string>

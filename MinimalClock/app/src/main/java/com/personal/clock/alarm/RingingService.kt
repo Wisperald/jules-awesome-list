@@ -123,12 +123,14 @@ class RingingService : Service() {
 
     private suspend fun dismissAlarm(id: Long) {
         if ((active as? RingingInfo.AlarmRinging)?.id == id) deactivate()
+        appContainer.notifications.cancelAlarmStatus(id) // fallback / snoozed notification
         appContainer.alarmController.dismiss(id)
         stopIfIdle()
     }
 
     private suspend fun snoozeAlarm(id: Long) {
         if ((active as? RingingInfo.AlarmRinging)?.id == id) deactivate()
+        appContainer.notifications.cancelAlarmStatus(id)
         val alarm = appContainer.alarmController.snooze(id)
         if (alarm?.snoozedUntil != null) appContainer.notifications.showSnoozed(alarm, is24Hour())
         stopIfIdle()

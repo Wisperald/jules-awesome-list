@@ -157,6 +157,8 @@ S = {
 "channel_timer_running": ("Running timers", "Идущие таймеры", "Жүріп жатқан таймерлер"),
 "channel_timer_running_desc": ("Countdown of active timers", "Обратный отсчёт активных таймеров", "Белсенді таймерлердің кері санағы"),
 "channel_alarm_status": ("Alarm status", "Состояние будильников", "Оятқыш күйі"),
+"channel_alarm_fallback": ("Alarms (backup sound)", "Будильники (резервный сигнал)", "Оятқыштар (қосалқы дыбыс)"),
+"channel_alarm_fallback_desc": ("Used only if the system blocks the normal alarm sound", "Используется, только если система заблокировала обычный сигнал", "Жүйе әдеттегі дыбысты бұғаттаған жағдайда ғана қолданылады"),
 "channel_alarm_status_desc": ("Snoozed and missed alarms", "Отложенные и пропущенные будильники", "Кейінге қалдырылған және өткізіп алынған оятқыштар"),
 
 # Widgets

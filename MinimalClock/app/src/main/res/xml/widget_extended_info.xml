@@ -3,6 +3,7 @@
     android:description="@string/widget_extended_description"
     android:initialLayout="@layout/widget_extended"
     android:previewLayout="@layout/widget_extended"
+    android:previewImage="@drawable/ic_launcher_legacy"
     android:minWidth="250dp"
     android:minHeight="110dp"
     android:minResizeWidth="180dp"

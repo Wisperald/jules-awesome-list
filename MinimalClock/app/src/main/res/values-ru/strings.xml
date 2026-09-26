@@ -140,6 +140,8 @@
     <string name="channel_timer_running">Идущие таймеры</string>
     <string name="channel_timer_running_desc">Обратный отсчёт активных таймеров</string>
     <string name="channel_alarm_status">Состояние будильников</string>
+    <string name="channel_alarm_fallback">Будильники (резервный сигнал)</string>
+    <string name="channel_alarm_fallback_desc">Используется, только если система заблокировала обычный сигнал</string>
     <string name="channel_alarm_status_desc">Отложенные и пропущенные будильники</string>
     <string name="widget_compact_name">Часы</string>
     <string name="widget_extended_name">Часы и будильник</string>

@@ -140,6 +140,8 @@
     <string name="channel_timer_running">Жүріп жатқан таймерлер</string>
     <string name="channel_timer_running_desc">Белсенді таймерлердің кері санағы</string>
     <string name="channel_alarm_status">Оятқыш күйі</string>
+    <string name="channel_alarm_fallback">Оятқыштар (қосалқы дыбыс)</string>
+    <string name="channel_alarm_fallback_desc">Жүйе әдеттегі дыбысты бұғаттаған жағдайда ғана қолданылады</string>
     <string name="channel_alarm_status_desc">Кейінге қалдырылған және өткізіп алынған оятқыштар</string>
     <string name="widget_compact_name">Сағат</string>
     <string name="widget_extended_name">Сағат және оятқыш</string>
