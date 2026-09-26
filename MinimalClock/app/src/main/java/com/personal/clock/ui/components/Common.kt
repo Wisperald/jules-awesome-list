@@ -1,6 +1,6 @@
 package com.personal.clock.ui.components
 
-import android.content.Context
+import android.content.res.Resources
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -22,7 +22,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalResources
+import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.heading
@@ -30,6 +32,7 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -40,6 +43,13 @@ import java.util.Locale
 /** Current UI locale, read through the configuration so a language change recomposes. */
 @Composable
 fun currentLocale(): Locale = LocalConfiguration.current.locales[0]
+
+/** Current window size in dp (correct in split-screen and freeform windows). */
+@Composable
+fun windowSizeDp(): DpSize {
+    val size = LocalWindowInfo.current.containerSize
+    return with(LocalDensity.current) { DpSize(size.width.toDp(), size.height.toDp()) }
+}
 
 /** Minimum touch target recommended by Material / accessibility guidelines. */
 val MinTouchTarget = 48.dp
@@ -152,17 +162,14 @@ fun Stepper(
 }
 
 /** "7 h 5 min" style text for a positive duration. */
-fun durationText(context: Context, millis: Long): String {
+fun durationText(resources: Resources, millis: Long): String {
     val (days, hours, minutes) = DurationFormat.splitDaysHoursMinutes(millis)
     return when {
-        days > 0 -> context.getString(R.string.duration_days_hours, days, hours)
-        hours > 0 -> context.getString(R.string.duration_hours_minutes, hours, minutes)
-        else -> context.getString(R.string.duration_minutes, minutes)
+        days > 0 -> resources.getString(R.string.duration_days_hours, days, hours)
+        hours > 0 -> resources.getString(R.string.duration_hours_minutes, hours, minutes)
+        else -> resources.getString(R.string.duration_minutes, minutes)
     }
 }
 
 @Composable
-fun durationUntilText(millis: Long): String {
-    LocalConfiguration.current // recompose on configuration (language) change
-    return durationText(LocalContext.current, millis)
-}
+fun durationUntilText(millis: Long): String = durationText(LocalResources.current, millis)

@@ -14,8 +14,8 @@ S = {
 "delete": ("Delete", "Удалить", "Жою"),
 "remove": ("Remove", "Удалить", "Алып тастау"),
 "clear": ("Clear", "Очистить", "Тазалау"),
-"state_on": ("On", "Вкл.", "Қосулы"),
-"state_off": ("Off", "Выкл.", "Өшірулі"),
+"alarm_state_on": ("On", "Вкл.", "Қосулы"),
+"alarm_state_off": ("Off", "Выкл.", "Өшірулі"),
 
 # Clock / world clock
 "world_clock": ("World clock", "Мировое время", "Әлем уақыты"),
@@ -98,7 +98,7 @@ S = {
 "custom_timer": ("Custom", "Другое время", "Басқа уақыт"),
 "start_timer_for": ("Start timer for %1$s", "Запустить таймер на %1$s", "%1$s таймерін іске қосу"),
 "timers_empty": ("No timers. Choose a preset above.", "Таймеров нет. Выберите время выше.", "Таймер жоқ. Жоғарыдан уақытты таңдаңыз."),
-"timers_limit": ("Up to %1$d timers", "Не больше %1$d таймеров", "Ең көбі %1$d таймер"),
+"timers_limit": ("Timer limit reached: %1$d", "Достигнут лимит таймеров: %1$d", "Таймерлер шегіне жеттіңіз: %1$d"),
 "timer_default_title": ("Timer", "Таймер", "Таймер"),
 "timer_default_name": ("Timer %1$s", "Таймер %1$s", "Таймер %1$s"),
 "timer_label": ("Timer name", "Название таймера", "Таймер атауы"),

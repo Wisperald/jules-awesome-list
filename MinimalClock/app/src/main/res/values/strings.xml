@@ -14,8 +14,8 @@
     <string name="delete">Delete</string>
     <string name="remove">Remove</string>
     <string name="clear">Clear</string>
-    <string name="state_on">On</string>
-    <string name="state_off">Off</string>
+    <string name="alarm_state_on">On</string>
+    <string name="alarm_state_off">Off</string>
     <string name="world_clock">World clock</string>
     <string name="world_clock_empty">Add cities to compare time zones.</string>
     <string name="add_city">Add city</string>
@@ -88,7 +88,7 @@
     <string name="custom_timer">Custom</string>
     <string name="start_timer_for">Start timer for %1$s</string>
     <string name="timers_empty">No timers. Choose a preset above.</string>
-    <string name="timers_limit">Up to %1$d timers</string>
+    <string name="timers_limit">Timer limit reached: %1$d</string>
     <string name="timer_default_title">Timer</string>
     <string name="timer_default_name">Timer %1$s</string>
     <string name="timer_label">Timer name</string>

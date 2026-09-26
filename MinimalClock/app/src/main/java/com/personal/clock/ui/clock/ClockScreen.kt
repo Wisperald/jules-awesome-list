@@ -38,8 +38,8 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalResources
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
@@ -150,9 +150,8 @@ fun ClockScreen(settings: AppSettings, viewModel: ClockViewModel = viewModel(fac
 
 @Composable
 private fun cityNameResolver(): (City) -> String {
-    val context = LocalContext.current
-    val configuration = LocalConfiguration.current
-    return remember(configuration) { { city: City -> context.getString(cityNameRes(city.id)) } }
+    val resources = LocalResources.current
+    return remember(resources) { { city: City -> resources.getString(cityNameRes(city.id)) } }
 }
 
 @Composable

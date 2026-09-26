@@ -67,6 +67,13 @@ android {
         compose = true
     }
 
+    bundle {
+        // The in-app language picker needs every language present, so do not split by locale.
+        language {
+            enableSplit = false
+        }
+    }
+
     testOptions {
         unitTests.isReturnDefaultValues = true
     }

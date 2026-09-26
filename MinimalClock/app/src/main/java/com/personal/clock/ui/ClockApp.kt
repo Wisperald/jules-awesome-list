@@ -32,7 +32,6 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -45,6 +44,7 @@ import com.personal.clock.alarm.RingingState
 import com.personal.clock.data.AppSettings
 import com.personal.clock.ui.alarms.AlarmsScreen
 import com.personal.clock.ui.clock.ClockScreen
+import com.personal.clock.ui.components.windowSizeDp
 import com.personal.clock.ui.settings.SettingsScreen
 import com.personal.clock.ui.stopwatch.StopwatchScreen
 import com.personal.clock.ui.timers.TimersScreen
@@ -73,7 +73,7 @@ fun ClockApp(
     }
 
     // Wide screens (tablets, landscape, foldables) use a navigation rail instead of a bottom bar.
-    val wide = LocalConfiguration.current.screenWidthDp >= 600
+    val wide = windowSizeDp().width >= 600.dp
 
     Scaffold(
         topBar = {

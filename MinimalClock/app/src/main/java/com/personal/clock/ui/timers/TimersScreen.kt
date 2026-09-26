@@ -95,13 +95,14 @@ fun TimersScreen(viewModel: TimersViewModel = viewModel(factory = AppViewModels.
                 ) {
                     TimerItem.QUICK_MINUTES.forEach { minutes ->
                         val text = stringResource(R.string.minutes_short, minutes)
+                        val description = stringResource(R.string.start_timer_for, text)
                         AssistChip(
                             onClick = { create("", minutes * 60_000L) },
                             label = { Text(text) },
                             leadingIcon = { Icon(painterResource(R.drawable.ic_play), contentDescription = null) },
                             modifier = Modifier
                                 .heightIn(min = 48.dp)
-                                .semantics { contentDescription = context.getString(R.string.start_timer_for, text) },
+                                .semantics { contentDescription = description },
                         )
                     }
                     AssistChip(

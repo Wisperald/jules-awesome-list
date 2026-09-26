@@ -1,5 +1,6 @@
 package com.personal.clock.alarm
 
+import android.annotation.SuppressLint
 import android.app.AlarmManager
 import android.content.BroadcastReceiver
 import android.content.Context
@@ -29,6 +30,9 @@ class BootReceiver : BroadcastReceiver() {
     }
 
     private companion object {
+        // The exact-alarm action is a compile-time String constant: referencing it is safe on
+        // API 26–30, where that broadcast simply never arrives.
+        @SuppressLint("InlinedApi")
         val HANDLED = setOf(
             Intent.ACTION_BOOT_COMPLETED,
             Intent.ACTION_LOCKED_BOOT_COMPLETED,

@@ -5,7 +5,6 @@ import android.app.AlarmManager
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.os.Build
 import android.provider.Settings
 import androidx.activity.compose.rememberLauncherForActivityResult
@@ -33,6 +32,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.core.app.NotificationManagerCompat
+import androidx.core.net.toUri
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.LifecycleEventEffect
 import com.personal.clock.R
@@ -103,7 +103,7 @@ fun openNotificationSettings(context: Context) {
 fun openExactAlarmSettings(context: Context) {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
         context.safeStart(
-            Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM, Uri.parse("package:${context.packageName}")),
+            Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM, "package:${context.packageName}".toUri()),
         )
     }
 }
@@ -111,7 +111,7 @@ fun openExactAlarmSettings(context: Context) {
 fun openFullScreenSettings(context: Context) {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
         context.safeStart(
-            Intent(Settings.ACTION_MANAGE_APP_USE_FULL_SCREEN_INTENT, Uri.parse("package:${context.packageName}")),
+            Intent(Settings.ACTION_MANAGE_APP_USE_FULL_SCREEN_INTENT, "package:${context.packageName}".toUri()),
         )
     }
 }
@@ -121,7 +121,7 @@ private fun Context.safeStart(intent: Intent) {
         startActivity(intent)
     } catch (_: ActivityNotFoundException) {
         startActivity(
-            Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.parse("package:$packageName")),
+            Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, "package:$packageName".toUri()),
         )
     }
 }

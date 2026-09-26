@@ -43,7 +43,6 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
@@ -62,6 +61,7 @@ import com.personal.clock.ui.components.Stepper
 import com.personal.clock.ui.components.rememberRingtonePicker
 import com.personal.clock.ui.components.ringtoneTitle
 import com.personal.clock.ui.components.currentLocale
+import com.personal.clock.ui.components.windowSizeDp
 import java.time.format.TextStyle
 import java.time.temporal.WeekFields
 
@@ -85,7 +85,7 @@ fun AlarmEditorDialog(
     var confirmDelete by rememberSaveable { mutableStateOf(false) }
     val pickRingtone = rememberRingtonePicker(ringtone) { ringtone = it }
     // The dial needs ~420 dp of height; on short screens (landscape phones) use keyboard input.
-    val useDial = LocalConfiguration.current.screenHeightDp >= 640
+    val useDial = windowSizeDp().height >= 640.dp
 
     Dialog(onDismissRequest = onDismiss, properties = DialogProperties(usePlatformDefaultWidth = false)) {
         Surface(Modifier.fillMaxSize()) {

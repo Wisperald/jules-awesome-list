@@ -14,8 +14,8 @@
     <string name="delete">Жою</string>
     <string name="remove">Алып тастау</string>
     <string name="clear">Тазалау</string>
-    <string name="state_on">Қосулы</string>
-    <string name="state_off">Өшірулі</string>
+    <string name="alarm_state_on">Қосулы</string>
+    <string name="alarm_state_off">Өшірулі</string>
     <string name="world_clock">Әлем уақыты</string>
     <string name="world_clock_empty">Уақыт белдеулерін салыстыру үшін қалалар қосыңыз.</string>
     <string name="add_city">Қала қосу</string>
@@ -88,7 +88,7 @@
     <string name="custom_timer">Басқа уақыт</string>
     <string name="start_timer_for">%1$s таймерін іске қосу</string>
     <string name="timers_empty">Таймер жоқ. Жоғарыдан уақытты таңдаңыз.</string>
-    <string name="timers_limit">Ең көбі %1$d таймер</string>
+    <string name="timers_limit">Таймерлер шегіне жеттіңіз: %1$d</string>
     <string name="timer_default_title">Таймер</string>
     <string name="timer_default_name">Таймер %1$s</string>
     <string name="timer_label">Таймер атауы</string>

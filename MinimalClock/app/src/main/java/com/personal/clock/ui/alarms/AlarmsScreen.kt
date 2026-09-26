@@ -27,6 +27,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalResources
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
@@ -60,6 +61,7 @@ fun AlarmsScreen(settings: AppSettings, viewModel: AlarmsViewModel = viewModel(f
     val alarms by viewModel.alarms.collectAsStateWithLifecycle()
     val now by rememberWallClock()
     val context = LocalContext.current
+    val resources = LocalResources.current
     val locale = currentLocale()
     val is24Hour = TimeText.is24Hour(context, settings.timeFormat)
     val permissions = rememberPermissionStatus()
@@ -133,7 +135,7 @@ fun AlarmsScreen(settings: AppSettings, viewModel: AlarmsViewModel = viewModel(f
                     val zonedNow = ZonedDateTime.now()
                     val trigger = AlarmScheduleCalculator.nextTrigger(saved, zonedNow) ?: return@save
                     val left = AlarmScheduleCalculator.timeUntil(trigger, zonedNow).toMillis()
-                    val text = context.getString(R.string.alarm_saved_in, durationText(context, left))
+                    val text = resources.getString(R.string.alarm_saved_in, durationText(resources, left))
                     Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
                 }
             },
@@ -160,7 +162,7 @@ private fun AlarmCard(
     onCancelSnooze: () -> Unit,
 ) {
     val timeText = TimeText.format(alarm.hour, alarm.minute, locale, is24Hour)
-    val stateText = stringResource(if (alarm.enabled) R.string.state_on else R.string.state_off)
+    val stateText = stringResource(if (alarm.enabled) R.string.alarm_state_on else R.string.alarm_state_off)
     val title = alarm.label.ifBlank { stringResource(R.string.alarm_default_title) }
     val contentColor = if (alarm.enabled) MaterialTheme.colorScheme.onSurface else MaterialTheme.colorScheme.onSurfaceVariant
 
