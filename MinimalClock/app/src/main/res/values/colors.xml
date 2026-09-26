@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Window / splash (light theme). -->
+    <color name="window_background">#FFF5F7F8</color>
+    <!-- Splash: deep blue in light mode, graphite in dark mode (values-night). -->
+    <color name="splash_background">#FF1C2A3A</color>
+
+    <!-- Widgets on Android 8–11 (Android 12+ uses dynamic system colors, see values-v31). -->
+    <color name="widget_background">#FFF5F7F8</color>
+    <color name="widget_text">#FF182024</color>
+    <color name="widget_text_secondary">#FF3F4A4E</color>
+    <color name="widget_accent">#FF2E6B70</color>
+    <color name="widget_button_background">#FFDDE7E9</color>
+    <color name="widget_button_text">#FF15363A</color>
+</resources>
