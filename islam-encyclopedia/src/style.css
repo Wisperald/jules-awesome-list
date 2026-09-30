@@ -1,0 +1,153 @@
+/* ==========================================================
+   ИСЛАМ · Большая энциклопедия — дизайн-система вёрстки
+   ========================================================== */
+:root{
+  --ink:#121519; --ink2:#2B3036; --muted:#6A7078; --line:#E4DED1;
+  --paper:#FFFFFF; --sand:#F6F1E6; --sand2:#EFE6D3;
+  --em:#0E5A43; --em-d:#062E23; --em-l:#DDEFE7;
+  --gold:#B8892B; --gold-l:#F1E4C2;
+  --sun:#0E7A5A; --shi:#3346A8; --kha:#B4531F; --suf:#0C8585;
+  --mod:#C0395A; --het:#6F52A8; --ext:#80868F; --pol:#A06A00;
+}
+@page{
+  size:A4; margin:20mm 17mm 20mm 17mm;
+  @top-left{content:string(chapter); font:500 7pt 'Inter'; color:#8A8F96; letter-spacing:.08em; text-transform:uppercase; vertical-align:bottom; padding-bottom:4mm}
+  @top-right{content:"ИСЛАМ · ЭНЦИКЛОПЕДИЯ"; font:600 6.5pt 'Unbounded'; color:#B8892B; letter-spacing:.14em; vertical-align:bottom; padding-bottom:4mm}
+  @bottom-right{content:counter(page); font:600 8pt 'Unbounded'; color:#0E5A43}
+  @bottom-left{content:"ٱلْإِسْلَام"; font:400 9pt 'Amiri'; color:#C9B98F}
+}
+@page full{ margin:0; @top-left{content:none} @top-right{content:none} @bottom-right{content:none} @bottom-left{content:none} }
+@page :first{ margin:0 }
+
+html{ font-family:'Inter',sans-serif; font-size:9.3pt; color:var(--ink); line-height:1.52; }
+body{ margin:0; -webkit-print-color-adjust:exact; print-color-adjust:exact; hyphens:auto; }
+p{ margin:0 0 2.4mm; text-align:justify; orphans:2; widows:2 }
+b,strong{ font-weight:600; color:var(--ink) }
+em{ font-style:italic }
+.ar{ font-family:'Amiri',serif; direction:rtl; unicode-bidi:isolate; font-size:1.18em; color:var(--em) }
+small,.small{ font-size:.86em; color:var(--muted) }
+
+/* ---------------- Обложка и полноформатные страницы ---------------- */
+.full{ page:full; width:210mm; height:297mm; box-sizing:border-box; position:relative; overflow:hidden; break-after:page }
+.pattern{ position:absolute; inset:0; opacity:.16;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48'%3E%3Cg fill='none' stroke='%23E9C877' stroke-width='1'%3E%3Crect x='12' y='12' width='24' height='24'/%3E%3Crect x='12' y='12' width='24' height='24' transform='rotate(45 24 24)'/%3E%3Ccircle cx='24' cy='24' r='5'/%3E%3Cpath d='M0 0L12 12M48 0L36 12M0 48L12 36M48 48L36 36'/%3E%3C/g%3E%3C/svg%3E");
+  background-size:17mm 17mm }
+.cover{ background:radial-gradient(120% 80% at 80% 10%,#127055 0%,#0A4332 45%,#041F17 100%); color:#fff; padding:26mm 20mm }
+.cover .top{ position:relative; font:600 7.5pt 'Unbounded'; letter-spacing:.3em; color:#E9C877 }
+.cover .arbig{ position:relative; font-family:'Amiri'; font-size:92pt; color:#E9C877; direction:rtl; text-align:right; margin-top:22mm; line-height:1 }
+.cover h1{ position:relative; font:800 68pt/0.95 'Unbounded'; margin:10mm 0 0; letter-spacing:-.02em }
+.cover .sub{ position:relative; font:500 italic 19pt/1.25 'Playfair Display'; color:#F4EAD0; margin-top:7mm; max-width:150mm }
+.cover .meta{ position:absolute; left:20mm; right:20mm; bottom:24mm; display:flex; justify-content:space-between; font:500 8pt 'Inter'; color:#CFE3DA; border-top:1px solid rgba(233,200,119,.5); padding-top:5mm }
+.cover .meta b{ color:#E9C877; font-family:'Unbounded'; font-weight:600 }
+.cover .band{ position:absolute; right:20mm; top:118mm; width:1px; height:80mm; background:linear-gradient(#E9C877,transparent) }
+
+.part-opener{ background:linear-gradient(160deg,#0A4332 0%,#052119 100%); color:#fff; padding:30mm 22mm }
+.part-opener .pn{ position:relative; font:800 150pt/1 'Unbounded'; color:#E9C877; opacity:.85; letter-spacing:-.04em }
+.part-opener .pl{ position:relative; font:600 8pt 'Unbounded'; letter-spacing:.35em; color:#E9C877; margin-top:6mm }
+.part-opener h1{ position:relative; font:800 34pt/1.05 'Unbounded'; margin:4mm 0 6mm; color:#fff }
+.part-opener .pd{ position:relative; font:500 italic 14pt/1.4 'Playfair Display'; color:#F1E4C2; max-width:140mm }
+.part-opener ul{ position:relative; list-style:none; padding:0; margin:14mm 0 0; border-top:1px solid rgba(233,200,119,.4) }
+.part-opener li{ font:500 10pt 'Inter'; padding:2.6mm 0; border-bottom:1px solid rgba(255,255,255,.12); color:#E6F0EB }
+.part-opener li span{ font:600 8pt 'Unbounded'; color:#E9C877; display:inline-block; width:14mm }
+.part-opener .ar-bg{ position:absolute; right:-6mm; bottom:-14mm; font-family:'Amiri'; font-size:150pt; color:rgba(233,200,119,.10); direction:rtl }
+
+/* ---------------- Глава ---------------- */
+.chapter{ break-before:page }
+.ch-head{ position:relative; padding:0 0 6mm; margin-bottom:6mm; border-bottom:2px solid var(--ink) }
+.ch-num{ font:800 44pt/1 'Unbounded'; color:var(--gold); letter-spacing:-.02em }
+.ch-kicker{ font:600 7pt 'Unbounded'; letter-spacing:.28em; color:var(--em); margin:3mm 0 1mm; text-transform:uppercase }
+h1.ch-title{ font:800 23pt/1.1 'Unbounded'; margin:0; color:var(--ink); letter-spacing:-.01em }
+.ch-ar{ position:absolute; right:0; top:0; font-family:'Amiri'; font-size:30pt; color:var(--gold); direction:rtl; line-height:1.2 }
+.lead{ font:500 italic 12.2pt/1.45 'Playfair Display'; color:var(--ink2); margin:0 0 5mm; text-align:left }
+
+h2{ font:700 13pt/1.2 'Unbounded'; color:var(--em-d); margin:7mm 0 3mm; break-after:avoid; letter-spacing:-.005em }
+h2::before{ content:""; display:inline-block; width:3mm; height:3mm; background:var(--gold); margin-right:2.5mm; transform:rotate(45deg) translateY(-.6mm) }
+h3{ font:700 10.3pt/1.25 'Inter'; color:var(--ink); margin:5mm 0 2mm; break-after:avoid; text-transform:uppercase; letter-spacing:.04em }
+h4{ font:600 9.6pt 'Inter'; color:var(--em); margin:3.5mm 0 1.5mm; break-after:avoid }
+ul,ol{ margin:0 0 3mm; padding-left:5mm } li{ margin:0 0 1.1mm }
+ul.clean{ list-style:none; padding:0 } ul.clean li{ padding-left:4mm; position:relative }
+ul.clean li::before{ content:"◆"; position:absolute; left:0; color:var(--gold); font-size:.7em; top:.25em }
+
+/* ---------------- Метки течений ---------------- */
+.tag{ display:inline-block; font:600 6.4pt 'Unbounded'; letter-spacing:.06em; padding:.7mm 1.8mm; border-radius:1.4mm; color:#fff; vertical-align:middle; margin:0 .6mm .6mm 0; text-transform:uppercase; white-space:nowrap }
+.t-sun{background:var(--sun)} .t-shi{background:var(--shi)} .t-kha{background:var(--kha)} .t-suf{background:var(--suf)}
+.t-mod{background:var(--mod)} .t-het{background:var(--het)} .t-ext{background:var(--ext)} .t-pol{background:var(--pol)}
+.t-live{background:#fff; color:var(--em); box-shadow:inset 0 0 0 .8px var(--em)}
+.t-dyn{background:var(--ink2)} .t-warn{background:#8B1E1E}
+
+/* ---------------- Карточки ---------------- */
+.card{ display:grid; grid-template-columns:44mm 1fr; column-gap:5mm; padding:3.2mm 0; border-top:1px solid var(--line); break-inside:avoid }
+.card:last-child{ border-bottom:1px solid var(--line) }
+.card .k .n{ font:700 10pt/1.2 'Inter'; color:var(--ink) }
+.card .k .a{ font-family:'Amiri'; font-size:12pt; color:var(--em); direction:rtl; text-align:left; unicode-bidi:plaintext; line-height:1.3 }
+.card .k .d{ font:600 7pt/1.4 'Unbounded'; color:var(--gold); margin-top:1mm; letter-spacing:.02em }
+.card .k .g{ font:500 7.6pt/1.35 'Inter'; color:var(--muted); margin-top:.6mm }
+.card .v p{ margin-bottom:1.2mm } .card .v p:last-child{margin:0}
+.cards{ margin:2mm 0 4mm }
+
+/* ---------------- Хронология ---------------- */
+.tl{ margin:2mm 0 5mm; position:relative }
+.tl .e{ display:grid; grid-template-columns:24mm 1fr; column-gap:4mm; padding:1.5mm 0; break-inside:avoid; position:relative }
+.tl .e .y{ font:700 8.4pt/1.35 'Unbounded'; color:var(--em); text-align:right }
+.tl .e .x{ border-left:2px solid var(--gold-l); padding-left:4mm; position:relative }
+.tl .e .x::before{ content:""; position:absolute; left:-4.1px; top:1.6mm; width:6px; height:6px; background:var(--gold); border-radius:50% }
+.tl .e .x b{ color:var(--em-d) }
+
+/* ---------------- Таблицы ---------------- */
+table{ width:100%; border-collapse:collapse; margin:2mm 0 5mm; font-size:8.3pt; line-height:1.38 }
+th{ background:var(--em-d); color:#fff; font:600 7pt 'Unbounded'; letter-spacing:.05em; text-align:left; padding:2mm 2mm; vertical-align:bottom }
+td{ padding:1.7mm 2mm; border-bottom:1px solid var(--line); vertical-align:top }
+tr:nth-child(even) td{ background:#FAF7F0 }
+tr{ break-inside:avoid }
+td.c,th.c{ text-align:center }
+
+/* ---------------- Врезки ---------------- */
+.box{ background:var(--sand); border-radius:2.5mm; padding:4mm 5mm; margin:3mm 0 5mm; break-inside:avoid; position:relative }
+.box .bt{ font:700 7pt 'Unbounded'; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); margin-bottom:1.5mm }
+.box p:last-child,.box ul:last-child{ margin-bottom:0 }
+.box.note{ background:var(--em-l) } .box.note .bt{ color:var(--em) }
+.box.debate{ background:#F4EEF8 } .box.debate .bt{ color:var(--het) }
+.box.warn{ background:#FBECEC } .box.warn .bt{ color:#8B1E1E }
+.box.dark{ background:var(--em-d); color:#E6F0EB } .box.dark b{color:#fff} .box.dark .bt{ color:#E9C877 }
+.quote{ font:500 italic 12pt/1.45 'Playfair Display'; color:var(--em-d); border-left:3px solid var(--gold); padding:1mm 0 1mm 5mm; margin:4mm 0 5mm; break-inside:avoid }
+.quote .src{ display:block; font:500 7.6pt 'Inter'; font-style:normal; color:var(--muted); margin-top:1.5mm }
+
+/* ---------------- Статистика ---------------- */
+.stats{ display:grid; grid-template-columns:repeat(4,1fr); gap:3mm; margin:3mm 0 5mm; break-inside:avoid }
+.stats.s3{ grid-template-columns:repeat(3,1fr) }
+.stat{ background:var(--em-d); color:#fff; border-radius:2.5mm; padding:4mm }
+.stat .v{ font:800 15pt/1.05 'Unbounded'; color:#E9C877 } .stat .l{ font:500 7.6pt/1.35 'Inter'; margin-top:2mm; color:#D9E8E1 }
+.stat.alt{ background:var(--sand) } .stat.alt .v{ color:var(--em) } .stat.alt .l{ color:var(--ink2) }
+
+/* ---------------- Древо ---------------- */
+.tree,.tree ul{ list-style:none; margin:0; padding:0 }
+.tree ul{ margin-left:5mm; padding-left:4mm; border-left:1.4px solid #D8CFB9 }
+.tree li{ position:relative; margin:0; padding:.9mm 0 .9mm 0 }
+.tree ul > li::before{ content:""; position:absolute; left:-4mm; top:3.4mm; width:3.2mm; border-top:1.4px solid #D8CFB9 }
+.tree .nd{ font-weight:600 } .tree .ds{ color:var(--muted); font-size:.92em }
+.tree > li > .nd{ font:700 10pt 'Unbounded' }
+.tree-wrap{ border:1px solid var(--line); border-radius:3mm; padding:4mm 5mm; margin:3mm 0 5mm }
+
+/* ---------------- Двухколоночный текст ---------------- */
+.gloss dt{ font:700 9pt 'Inter'; color:var(--em-d); margin-top:2mm; break-after:avoid }
+.gloss dt .ar{ font-size:1.05em; margin-left:1.5mm; color:var(--gold) }
+.gloss dd{ margin:0 0 1mm 0; break-inside:avoid }
+
+/* ---------------- Оглавление ---------------- */
+.toc h1{ font:800 26pt 'Unbounded'; margin:0 0 6mm }
+.toc .tp{ font:700 7.5pt 'Unbounded'; letter-spacing:.25em; color:var(--gold); margin:5mm 0 1.5mm; text-transform:uppercase; border-bottom:1px solid var(--gold-l); padding-bottom:1mm; break-after:avoid }
+.toc .tc{ display:flex; align-items:baseline; padding:1.1mm 0; break-inside:avoid }
+.toc .tc a{ color:var(--ink); text-decoration:none; font-weight:600; font-size:9.6pt }
+.toc .tc .nn{ font:700 8pt 'Unbounded'; color:var(--em); width:10mm; flex:none }
+.toc .tc .dots{ flex:1; border-bottom:1px dotted #BFB6A0; margin:0 2mm; transform:translateY(-1mm) }
+.toc .tc .pg a::after{ content:target-counter(attr(href url), page); font:700 8pt 'Unbounded'; color:var(--em) }
+.toc .ts{ font-size:7.6pt; color:var(--muted); margin:-.4mm 0 1.2mm 10mm; line-height:1.4 }
+
+a{ color:inherit; text-decoration:none }
+.pb{ break-before:page }
+.nobreak{ break-inside:avoid }
+.center{text-align:center}
+.legend{ font-size:7.8pt; color:var(--muted); margin:1mm 0 4mm }
+.two{ display:grid; grid-template-columns:1fr 1fr; gap:5mm; break-inside:avoid }
+.src-list li{ font-size:8.2pt; margin-bottom:1.3mm }
+.part-opener h1, h1.ch-title, .toc h1{ string-set:chapter content(text) }
