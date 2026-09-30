@@ -1,0 +1,131 @@
+@import url("fonts.css");
+
+:root{
+  --ink:#14202e; --ink2:#3b4a5c; --muted:#6b7a8c; --line:#dfe5ec; --paper:#ffffff; --soft:#f4f7fa;
+  --endo:#0f7c8a; --endo-l:#e3f4f5;
+  --circ:#5146d8; --circ-l:#ecebfd;
+  --herb:#2f7d4a; --herb-l:#e6f3ea;
+  --myco:#9a5b36; --myco-l:#f7ece4;
+  --life:#c2410c; --life-l:#fdeee4;
+  --red:#c62839; --red-l:#fdecee;
+  --amber:#b7791f; --amber-l:#fdf4e1;
+  --acc: var(--endo); --acc-l: var(--endo-l);
+}
+@page{ size:A4; margin:18mm 17mm 20mm 17mm;
+  @bottom-center{ content: counter(page); font-family:Manrope, sans-serif; font-size:8.5pt; color:#8a97a6; }
+  @top-right{ content:"Энциклопедия гормонов, ритмов и природных средств"; font-family:Manrope, sans-serif; font-size:7.5pt; color:#a3aebb; }
+}
+@page cover{ margin:0; @bottom-center{content:none} @top-right{content:none} }
+@page opener{ margin:0; @bottom-center{content:none} @top-right{content:none} }
+
+*{ box-sizing:border-box; }
+html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+body{ margin:0; font-family:"Source Serif 4", Georgia, serif; font-size:10.4pt; line-height:1.52; color:var(--ink); background:var(--paper); hyphens:auto; }
+h1,h2,h3,h4,.sans{ font-family:Manrope, sans-serif; }
+h2{ font-size:18pt; font-weight:800; letter-spacing:-.01em; margin:0 0 8pt; color:var(--ink); break-after:avoid; line-height:1.2; }
+h2 .num{ color:var(--acc); margin-right:6pt; }
+h3{ font-size:12.4pt; font-weight:700; margin:15pt 0 5pt; color:var(--acc); break-after:avoid; }
+h4{ font-size:10.4pt; font-weight:700; margin:10pt 0 3pt; break-after:avoid; }
+p{ margin:0 0 6pt; text-align:justify; }
+ul,ol{ margin:0 0 7pt; padding-left:16pt; }
+li{ margin-bottom:2pt; }
+strong{ font-weight:600; }
+a{ color:inherit; text-decoration:none; }
+small,.small{ font-size:8.6pt; color:var(--muted); }
+sub,sup{ line-height:0; }
+
+section.chapter{ break-before:page; }
+.lead{ font-size:11.6pt; color:var(--ink2); line-height:1.5; border-left:3pt solid var(--acc); padding:2pt 0 2pt 10pt; margin:4pt 0 12pt; }
+.kicker{ font-family:Manrope; font-size:8pt; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--acc); margin-bottom:2pt; }
+
+/* parts colour */
+.p-endo{ --acc:var(--endo); --acc-l:var(--endo-l); }
+.p-circ{ --acc:var(--circ); --acc-l:var(--circ-l); }
+.p-herb{ --acc:var(--herb); --acc-l:var(--herb-l); }
+.p-myco{ --acc:var(--myco); --acc-l:var(--myco-l); }
+.p-life{ --acc:var(--life); --acc-l:var(--life-l); }
+
+/* callouts */
+.box{ border-radius:7pt; padding:8pt 11pt 6pt; margin:8pt 0 10pt; break-inside:avoid; font-size:9.7pt; background:var(--acc-l); }
+.box .t{ font-family:Manrope; font-weight:800; font-size:8.2pt; letter-spacing:.1em; text-transform:uppercase; margin-bottom:3pt; color:var(--acc); }
+.box p:last-child,.box ul:last-child{ margin-bottom:2pt; }
+.box.red{ background:var(--red-l); } .box.red .t{ color:var(--red); }
+.box.amber{ background:var(--amber-l); } .box.amber .t{ color:var(--amber); }
+.box.dark{ background:var(--ink); color:#e8eef5; } .box.dark .t{ color:#8fe3ea; }
+.box.line{ background:none; border:1.2pt solid var(--line); }
+
+/* tables */
+table{ width:100%; border-collapse:collapse; margin:6pt 0 11pt; font-family:Manrope, sans-serif; font-size:8.3pt; line-height:1.35; }
+thead th{ background:var(--acc); color:#fff; text-align:left; font-weight:700; padding:5pt 6pt; }
+thead th:first-child{ border-top-left-radius:5pt; } thead th:last-child{ border-top-right-radius:5pt; }
+tbody td{ padding:4.5pt 6pt; border-bottom:.6pt solid var(--line); vertical-align:top; }
+tbody tr:nth-child(even) td{ background:#f8fafc; }
+tr{ break-inside:avoid; }
+td b{ font-weight:700; }
+caption{ caption-side:bottom; text-align:left; font-size:7.8pt; color:var(--muted); padding-top:3pt; }
+
+/* evidence badges */
+.ev{ display:inline-block; min-width:14pt; text-align:center; font-family:Manrope; font-weight:800; font-size:7.6pt; padding:1pt 4pt; border-radius:8pt; color:#fff; }
+.ev.A{ background:#1f8a4c; } .ev.B{ background:#5ba33b; } .ev.C{ background:#d39b1c; } .ev.D{ background:#d0532b; } .ev.X{ background:#8b1e2d; }
+.tag{ display:inline-block; font-family:Manrope; font-size:7.4pt; font-weight:700; padding:.5pt 5pt; border-radius:8pt; background:var(--soft); color:var(--ink2); border:.5pt solid var(--line); }
+
+/* figures */
+figure{ margin:8pt 0 12pt; break-inside:avoid; text-align:center; }
+figure svg{ max-width:100%; height:auto; }
+figcaption{ font-family:Manrope; font-size:8pt; color:var(--muted); margin-top:4pt; text-align:left; }
+figcaption b{ color:var(--acc); }
+
+.cols{ display:grid; grid-template-columns:1fr 1fr; gap:10pt; }
+.cols3{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:8pt; }
+.card{ background:var(--soft); border-radius:7pt; padding:8pt 10pt; font-size:9.2pt; break-inside:avoid; }
+.card h4{ margin-top:0; color:var(--acc); }
+.card p{ text-align:left; }
+
+/* monograph */
+.mono{ border:1pt solid var(--line); border-radius:8pt; padding:8pt 11pt 5pt; margin:0 0 9pt; break-inside:avoid; font-size:9.3pt; }
+.mono .hd{ display:flex; justify-content:space-between; align-items:baseline; gap:8pt; border-bottom:.6pt solid var(--line); padding-bottom:3pt; margin-bottom:4pt; }
+.mono .nm{ font-family:Manrope; font-weight:800; font-size:11pt; color:var(--acc); }
+.mono .lat{ font-style:italic; color:var(--muted); font-size:9pt; }
+.mono dl{ display:grid; grid-template-columns:78pt 1fr; gap:1.5pt 8pt; margin:0; }
+.mono dt{ font-family:Manrope; font-weight:700; font-size:7.8pt; color:var(--ink2); text-transform:uppercase; letter-spacing:.04em; padding-top:1.5pt; }
+.mono dd{ margin:0 0 1.5pt; }
+
+/* cover */
+.cover{ page:cover; height:297mm; width:210mm; position:relative; overflow:hidden; background:#0d1623; color:#fff; }
+.cover svg.bg{ position:absolute; inset:0; width:100%; height:100%; }
+.cover .inner{ position:absolute; left:18mm; right:18mm; bottom:24mm; }
+.cover .eyebrow{ font-family:Manrope; font-weight:800; letter-spacing:.3em; font-size:9pt; color:#8fe3ea; text-transform:uppercase; }
+.cover h1{ font-family:Unbounded, Manrope, sans-serif; font-weight:700; font-size:36pt; line-height:1.05; margin:8pt 0 10pt; letter-spacing:-.01em; }
+.cover .sub{ font-family:Manrope; font-size:12pt; color:#c7d3e0; max-width:150mm; line-height:1.45; }
+.cover .meta{ font-family:Manrope; font-size:8.5pt; color:#8193a8; margin-top:16pt; }
+.cover .chips span{ display:inline-block; font-family:Manrope; font-size:8pt; font-weight:700; border:.8pt solid rgba(255,255,255,.35); border-radius:12pt; padding:2pt 8pt; margin:0 4pt 4pt 0; color:#dfe8f1; }
+
+/* part opener */
+.opener{ page:opener; break-before:page; height:297mm; width:210mm; position:relative; overflow:hidden; color:#fff; background:var(--acc); }
+.opener svg.bg{ position:absolute; inset:0; width:100%; height:100%; }
+.opener .inner{ position:absolute; left:20mm; right:20mm; bottom:30mm; }
+.opener .pn{ font-family:Unbounded, Manrope; font-size:110pt; font-weight:700; line-height:.9; opacity:.95; }
+.opener h1{ font-family:Unbounded, Manrope; font-size:30pt; font-weight:700; margin:6pt 0 10pt; line-height:1.1; }
+.opener p{ font-family:Manrope; font-size:11pt; color:rgba(255,255,255,.85); text-align:left; max-width:140mm; }
+.opener ul{ font-family:Manrope; font-size:9.5pt; color:rgba(255,255,255,.9); columns:2; padding-left:12pt; margin-top:10pt; }
+
+/* toc */
+.toc{ font-family:Manrope; font-size:9.1pt; }
+.toc .part{ font-weight:800; font-size:10pt; margin:7pt 0 2pt; padding:3pt 0; border-bottom:1.2pt solid var(--acc); color:var(--acc); display:flex; justify-content:space-between; }
+.toc .it{ display:flex; gap:6pt; padding:1.1pt 0; }
+.toc .it .d{ flex:1; border-bottom:.8pt dotted #c3ccd6; transform:translateY(-3pt); }
+.toc .it .n{ color:var(--muted); width:26pt; }
+.toc .it .pg{ font-weight:700; min-width:16pt; text-align:right; }
+
+.summary{ background:var(--ink); color:#e9eef4; border-radius:8pt; padding:10pt 13pt; margin:12pt 0 4pt; break-inside:avoid; font-size:9.6pt; }
+.summary .t{ font-family:Manrope; font-weight:800; font-size:8.2pt; letter-spacing:.12em; text-transform:uppercase; color:#8fe3ea; margin-bottom:4pt; }
+.summary ul{ margin:0; }
+.center{ text-align:center; }
+.nobreak{ break-inside:avoid; }
+.pb{ break-before:page; }
+.refs{ font-size:8.4pt; line-height:1.4; }
+.refs li{ margin-bottom:2.5pt; text-align:left; }
+.gloss dt{ font-family:Manrope; font-weight:800; color:var(--acc); font-size:9pt; }
+.gloss dd{ margin:0 0 5pt 0; font-size:9.2pt; }
+.gloss{ columns:2; column-gap:14pt; }
+.gloss div{ break-inside:avoid; }
